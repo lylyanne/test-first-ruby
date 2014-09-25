@@ -48,13 +48,14 @@ class Fixnum
 		text
 	end
 
+	# This is to check whether to use the SINGLES, TEENS, or TENS hash
 	def two_digit(str1, str2)
 		num = (str1 + str2).to_i 
 		if num <= 9
 			"#{SINGLES.key(num).to_s} "
 		elsif num < 20
 			"#{TEENS.key(num).to_s} " 
-		else
+		else #Check if it is a number that is 20 or 25 as 20 return just twenty while 25 returns twenty + five
 			str2 == "0" ? "#{TENS.key(num).to_s} " : "#{TENS.key((str1+"0").to_i).to_s} #{SINGLES.key(str2.to_i).to_s} "
 		end
 	end
